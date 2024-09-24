@@ -18,7 +18,7 @@ function App() {
     </header>
 
     <section class="hero" id="hero">
-        <h2>Get Fit, Stay Healthy</h2>
+        <h2>Get Fit, Stay Healthy!!</h2>
         <p>Join us to achieve your fitness goals with personalized plans and expert advice.</p>
         <button onclick="getStarted()">Get Started</button>
     </section>
