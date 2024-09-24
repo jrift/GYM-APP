@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       
       <header>
-        <h1>Fitness App</h1>
+        <h1>Test Fitness App</h1>
         <nav>
             <ul>
                 <li><a href="#hero">Home</a></li>
