@@ -1,4 +1,4 @@
-# Git Command Documentation
+# Documentation
 ### Rules:
 - Commit message: present tense feature
 - Compare pull request: Description
