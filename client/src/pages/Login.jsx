@@ -1,49 +1,59 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [err, setError] = useState(null);
+
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleLogin = async (e) => {
     e.preventDefault(); // Prevents page refresh
-    // Perform login logic here (e.g., API call)
-    console.log("Logging in with:", username, password);
-    
-    // Basic login check (replace with actual API response check)
-    if (username === "admin" && password === "password") {
-      navigate("/dashboard"); // Redirect to dashboard on successful login
-    } else {
-      alert("Invalid username or password");
+    try {
+      await axios.post("/auth/login", inputs);
+      navigate("/");
+    } catch (err) {
+      setError(err.response.data); // create an error file for errors
     }
   };
 
+  // console.log(inputs); logs the inputs
+
   return (
-    <div style={{ maxWidth: "400px", margin: "auto", padding: "20px", textAlign: "center" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-        <button type="submit" style={{ padding: "10px 20px" }}>Login</button>
+    <div className="register">
+      <h1>Login</h1>
+      <form>
+        <input
+          type="text"
+          name="username"
+          placeholder="username"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={handleChange}
+          required
+        />
+        <button
+          type="submit"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+        {err && <p>User already exists</p>}
+        <span>Don't have an account? <Link to="/register">Register</Link></span> 
       </form>
     </div>
   );

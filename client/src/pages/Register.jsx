@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault(); // Prevents page refresh
     try {
       await axios.post("/auth/register", inputs);
-      navigate("/login")
+      navigate("/login");
     } catch (err) {
       setError(err.response.data);
     }
@@ -30,43 +30,33 @@ const Register = () => {
   // console.log(inputs); logs the inputs
 
   return (
-    <div className="auth">
-      <h2>Register</h2>
+    <div className="register">
+      <h1>Register</h1>
       <form>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
+        <input
+          type="text"
+          name="username"
+          placeholder="username"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="email"
+          placeholder="email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={handleChange}
+          required
+        />
         <button
           type="submit"
           onClick={handleRegister}
-          style={{ padding: "10px 20px" }}
         >
           Register
         </button>
