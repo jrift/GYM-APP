@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -12,6 +12,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const { login } = useContext(AuthContext);
+
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -19,7 +21,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevents page refresh
     try {
-      await axios.post("/auth/login", inputs);
+      await login(inputs);
       navigate("/");
     } catch (err) {
       setError(err.response.data); // create an error file for errors
@@ -46,14 +48,13 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button
-          type="submit"
-          onClick={handleLogin}
-        >
+        <button type="submit" onClick={handleLogin}>
           Login
         </button>
         {err && <p>User already exists</p>}
-        <span>Don't have an account? <Link to="/register">Register</Link></span> 
+        <span>
+          Don't have an account? <Link to="/register">Register</Link>
+        </span>
       </form>
     </div>
   );

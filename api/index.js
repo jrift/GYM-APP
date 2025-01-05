@@ -12,3 +12,5 @@ app.use("/api/users", userRoutes);
 app.listen(8800, () => {
   console.log("Connected to Backend!");
 });
+
+// MIDDLEWARE

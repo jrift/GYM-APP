@@ -4,10 +4,7 @@ import Register from "./pages/Register";
 
 import "./App.css";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route, Router, Routes,
-  Link,
+  Route, Routes,
 } from "react-router-dom";
 
 function App() {
