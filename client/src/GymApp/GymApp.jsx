@@ -15,8 +15,8 @@ const GymApp = () => {
   const screens = {
     welcome: <WelcomeScreen setCurrentScreen={setCurrentScreen} setWorkoutPlan={setWorkoutPlan} workoutPlan={workoutPlan} />,
     goals: <GoalsScreen setCurrentScreen={setCurrentScreen} setWorkoutPlan={setWorkoutPlan} workoutPlan={workoutPlan} />,
-    // schedule: <ScheduleScreen setCurrentScreen={setCurrentScreen} />,
-    // map: <GymMapScreen setCurrentScreen={setCurrentScreen} />,
+    schedule: <ScheduleScreen setCurrentScreen={setCurrentScreen} />,
+    map: <GymMapScreen setCurrentScreen={setCurrentScreen} />,
   };
 
   return screens[currentScreen];

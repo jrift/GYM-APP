@@ -1,0 +1,95 @@
+.screen {
+  min-height: 100vh;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.headerSection {
+  text-align: center;
+  max-width: 448px;
+  width: 100%;
+}
+
+.h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.workoutType {
+  color: #778899;
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+}
+
+.workoutDetails {
+  background-color: #2A2F68;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+              0 1px 3px rgba(0, 0, 0, 0.2),
+              inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.workoutDetails p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: 448px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gymMap {
+  background-color: #2A2F68;
+  padding: 24px;
+  border-radius: 12px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+              0 1px 3px rgba(0, 0, 0, 0.2),
+              inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.continueButton {
+  width: 100%;
+  height: 56px;
+  background-color: #007AFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.continueButton:hover {
+  background-color: #0066cc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
