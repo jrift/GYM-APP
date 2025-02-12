@@ -2,7 +2,7 @@
   "name": "smmgym",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jrift.github.io/GYM-APP",
+  "homepage": "https://jrift.github.io/GYM-APP",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
