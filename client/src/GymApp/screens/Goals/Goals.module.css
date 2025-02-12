@@ -1,36 +1,74 @@
 .screen {
-    min-height: 100vh;
-    background-color: #000000;
-    color: #FFFFFF;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 32px;
-    text-align: center;
-  }
-  
-  .buttonContainer {
-    width: 100%;
-    max-width: 448px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .primaryButton {
-    width: 100%;
-    height: 56px;
-    background-color: #2A2F68;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.125rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
+  min-height: 100vh;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.headerSection {
+  text-align: center;
+}
+
+.h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 8px;
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: 448px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.primaryButton {
+  width: 100%;
+  height: 56px;
+  background-color: #2A2F68;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primaryButton:hover {
+  background-color: #373d7a;
+}
+
+.continueButton {
+  width: 100%;
+  height: 56px;
+  background-color: #007AFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 16px;
+}
+
+.continueButton:hover {
+  background-color: #0066cc;
+}
