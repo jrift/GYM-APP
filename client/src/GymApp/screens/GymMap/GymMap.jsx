@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./GymMap.module.css";
 import { workoutData } from "../../Data/workoutData";
+import gymMapImage from "../../../images/gym-floor-plan.svg"
 
 const GymMap = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const GymMap = () => {
 
         <div className={styles.buttonContainer}>
           <div className={styles.gymMap}>
-            <p>Gym map</p>
+          <img src={gymMapImage} alt="Gym floor plan" />
           </div>
 
           <button
