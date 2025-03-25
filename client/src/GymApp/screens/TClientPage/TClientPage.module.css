@@ -1,0 +1,280 @@
+.app {
+    background-color: #1a1b26;
+    min-height: 100vh;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #22233a;
+    border-bottom: 1px solid #2a2b36;
+  }
+  
+  .logo {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .navActions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    color: #8e8e93;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #2a2b36;
+  }
+  
+  .dashboardTitle {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  .statsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .statCard {
+    background-color: #22233a;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .statValue {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .statLabel {
+    font-size: 14px;
+    color: #8e8e93;
+  }
+  
+  .dateDisplay {
+    margin-top: 15px;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #8e8e93;
+  }
+  
+  .weekday {
+    font-weight: 600;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .screenContainer {
+    padding: 0 20px 20px;
+  }
+  
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 15px;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+  }
+  
+  .viewAll {
+    font-size: 14px;
+    color: #8e8e93;
+    cursor: pointer;
+  }
+  
+  .clientList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .clientItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #22233a;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .clientInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #2d4c3b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatarBlue {
+    background-color: #1e5060;
+  }
+  
+  .avatarPurple {
+    background-color: #4e3a6b;
+  }
+  
+  .avatarInitials {
+    color: white;
+    font-weight: 500;
+  }
+  
+  .clientDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .clientName {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  
+  .clientStatus {
+    font-size: 14px;
+    color: #8e8e93;
+  }
+  
+  .clientWorkouts {
+    font-size: 13px;
+    background-color: #2d4c3b;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .chevron {
+    color: #8e8e93;
+    font-size: 20px;
+  }
+  
+  .header {
+    padding: 20px 0;
+    border-bottom: 1px solid #2a2b36;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .workoutList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .workoutItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #2a2b36;
+    border-radius: 8px;
+  }
+  
+  .workoutHeader {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .workoutTitle {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .workoutInfo {
+    color: #8e8e93;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .workoutDate {
+    display: flex;
+    align-items: center;
+    color: #8e8e93;
+    font-size: 14px;
+  }
+  
+  .deleteButton {
+    background: none;
+    border: none;
+    color: #8e8e93;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #2a2b36;
+  }
+  
+  .tab {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #8e8e93;
+  }
+  
+  .activeTab {
+    color: white;
+    border-bottom: 2px solid #3a86ff;
+  }
+  
+  .addButton {
+    background-color: #3a86ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
