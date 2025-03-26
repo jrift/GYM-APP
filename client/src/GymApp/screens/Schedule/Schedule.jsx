@@ -1,88 +1,107 @@
-import React from "react";
-import { Info } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import styles from "./Schedule.module.css";
-import { workoutData } from "../../Data/workoutData";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './Schedule.module.css';
+import { workoutData } from './../../Data/workoutData';
 
 const Schedule = () => {
+  const navigate = useNavigate();
   // Get current day of week (0 = Sunday, 1 = Monday, etc.)
   const today = new Date().getDay();
   // Adjust to match our array (where Monday is 0)
   const adjustedToday = today === 0 ? 6 : today - 1;
 
-  const navigate = useNavigate();
-
-  // Create an array of days in order
+  // Create an array of days with short names
   const days = [
-    { key: 'monday', label: 'Monday' },
-    { key: 'tuesday', label: 'Tuesday' },
-    { key: 'wednesday', label: 'Wednesday' },
-    { key: 'thursday', label: 'Thursday' },
-    { key: 'friday', label: 'Friday' },
-    { key: 'saturday', label: 'Saturday' },
-    { key: 'sunday', label: 'Sunday' },
+    { key: 'monday', shortName: 'Mon' },
+    { key: 'tuesday', shortName: 'Tue' },
+    { key: 'wednesday', shortName: 'Wed' },
+    { key: 'thursday', shortName: 'Thu' },
+    { key: 'friday', shortName: 'Fri' },
+    { key: 'saturday', shortName: 'Sat' },
+    { key: 'sunday', shortName: 'Sun' }
   ];
 
+  // Display all 7 days in the horizontal view
+  const visibleDays = days;
+  
+  // Get today's workout details (for demo purposes, using the actual current day)
+  const todayKey = days[adjustedToday].key;
+  const todayWorkout = workoutData[todayKey];
+
+  // Function to get workout type color
+  const getWorkoutColor = (type) => {
+    switch(type) {
+      case 'Upper Body':
+        return '#4a82e0';
+      case 'Lower Body':
+        return '#4a82e0';
+      case 'Rest':
+      default:
+        return '#6e7180';
+    }
+  };
+
   return (
-    <div className={styles.screen}>
-      <div className={styles.contentContainer}>
-        <div className={styles.headerSection}>
-          <h1 className={styles.title}>This Week's Workout Plan</h1>
-          <p className={styles.subtitle}>
-            Following an upper/lower split with strategic rest days
-          </p>
-        </div>
-
-        <div className={styles.buttonContainer}>
-          <div className={styles.scheduleList}>
-            {days.map((day, index) => {
-              const workout = workoutData[day.key];
-              return (
-                <div 
-                  key={day.key}
-                  className={`${styles.scheduleCard} ${
-                    adjustedToday === index ? styles.today : ""
-                  }`}
-                >
-                  <div className="flex flex-col gap-2 flex-1">
-                    <div className="flex justify-between items-center">
-                      <h2 className={styles.dayName}>{day.label}</h2>
-                      <span className={`
-                        ${styles.workoutType}
-                        ${workout.type === 'Upper Body' ? styles.typeUpper : ''}
-                        ${workout.type === 'Lower Body' ? styles.typeLower : ''}
-                        ${workout.type === 'Rest' ? styles.typeRest : ''}
-                      `}>
-                        {workout.type}
-                      </span>
-                    </div>
-                    <div>
-                      <p className={styles.status}>{workout.focus}</p>
-                      {/* <p className={styles.description}>
-                        {workout.exercises[0].name}, {workout.exercises[1].name}...
-                      </p> */}
-                    </div>
-                  </div>
-                  <button 
-                    className={styles.infoButton}
-                    aria-label="More information"
-                    onClick={() => navigate("/map")}
-                  >
-                    <Info size={20} />
-                  </button>
+    <div className={styles.container}>
+      {/* Weekly Schedule Section */}
+      <section className={styles.weekSection}>
+        <h1 className={styles.title}>This Week</h1>
+        
+        <div className={styles.daysContainer}>
+          {visibleDays.map((day, index) => {
+            const workout = workoutData[day.key];
+            const isToday = index === adjustedToday;
+            const workoutColor = getWorkoutColor(workout.type);
+            
+            return (
+              <div 
+                key={day.key} 
+                className={`${styles.dayCard} ${isToday ? styles.activeDay : ''}`}
+              >
+                <div className={styles.dayHeader}>
+                  {day.shortName}
                 </div>
-              );
-            })}
-          </div>
-
-          <button 
-            className={styles.continueButton}
-            onClick={() => navigate("/map")}
-          >
-            Continue
-          </button>
+                <div className={styles.dayContent}>
+  
+                  <div 
+                    className={styles.workoutType}
+                    style={{ color: workoutColor }}
+                  >
+                    {workout.type}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </div>
+      </section>
+
+      {/* Today's Workout Section */}
+      <section className={styles.todaySection}>
+        <h2 className={styles.sectionTitle}>Today's Workout</h2>
+        <p className={styles.workoutFocus}>{todayWorkout.time}</p>
+        
+        <div className={styles.exercisesCard}>
+          <h3 className={styles.exercisesTitle}>Exercises</h3>
+          
+          <div className={styles.exercisesList}>
+            {todayWorkout.exercises.map((exercise, index) => (
+              <div key={index} className={styles.exerciseItem}>
+                <span className={styles.exerciseName}>{exercise.name}</span>
+                <span className={styles.exerciseReps}>{exercise.sets}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Continue Button */}
+      <button 
+        className={styles.continueButton}
+        onClick={() => navigate('/map')}
+      >
+        Continue
+      </button>
     </div>
   );
 };
