@@ -69,7 +69,7 @@ const WelcomePage = () => {
               Continue as Guest
             </button>
             <button className={styles.trainerButton} onClick={trainerDash}>
-              Trainer Dashboard
+              Click Here For Trainer Dashboard!
             </button>
           </div>
         </div>
