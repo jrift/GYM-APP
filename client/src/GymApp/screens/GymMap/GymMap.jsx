@@ -1,11 +1,9 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "./GymMap.module.css";
 import { workoutData } from "../../Data/workoutData";
-import gymMapImage from "../../../images/gym-floor-plan.svg"
 
 const GymMap = () => {
-  const navigate = useNavigate();
+  const [completedExercises, setCompletedExercises] = useState([]);
 
   // Get current day
   const days = [
@@ -17,41 +15,57 @@ const GymMap = () => {
     "friday",
     "saturday",
   ];
-
-  // have rest days just for streching
   
   const today = days[new Date().getDay()];
   const todayWorkout = workoutData[today];
 
+  const handleExerciseComplete = (exerciseIndex) => {
+    if (!completedExercises.includes(exerciseIndex)) {
+      setCompletedExercises(prev => [...prev, exerciseIndex]);
+    }
+  };
+
+  const isWorkoutComplete = completedExercises.length === todayWorkout.exercises.length;
+
   return (
     <div className={styles.screen}>
-      <div className={styles.contentContainer}>
-        <div className={styles.headerSection}>
-          <h1 className={styles.h1}>Today's Workout</h1>
-          <p className={styles.workoutType}>
-            {todayWorkout.type} - {todayWorkout.focus}
-          </p>
-          <div className={styles.workoutDetails}>
-            {todayWorkout.exercises.map((exercise, index) => (
-              <p key={index}>
-                {exercise.name} | {exercise.reps} | {exercise.sets}
-              </p>
-            ))}
-          </div>
+      <div className={styles.workoutContainer}>
+        <h1 className={styles.title}>Today's Workout</h1>
+
+        <div className={styles.exerciseList}>
+          {todayWorkout.exercises.map((exercise, index) => (
+            <div key={index} className={styles.exerciseItem}>
+              <div className={styles.exerciseDetails}>
+                <span className={styles.exerciseName}>
+                  {exercise.name} | {exercise.reps} | {exercise.sets}
+                </span>
+                <button 
+                  className={styles.continueButton}
+                  onClick={() => handleExerciseComplete(index)}
+                  disabled={completedExercises.includes(index)}
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className={styles.buttonContainer}>
-          <div className={styles.gymMap}>
-          <img src={gymMapImage} alt="Gym floor plan" />
-          </div>
-
-          <button
-            className={styles.continueButton}
-            onClick={() => navigate("/")}
-          >
-            End Workout
-          </button>
+        <div className={styles.gymMap}>
+          <div className={styles.mapItem}>Cardio Area</div>
+          <div className={styles.mapItem}>Weight Area</div>
+          <div className={styles.mapItem}>Functional Training</div>
+          <div className={styles.mapItem}>Women's Locker</div>
+          <div className={styles.mapItem}>Men's Locker</div>
+          <div className={styles.mapItem}>Reception</div>
         </div>
+
+        <button 
+          className={`${styles.endWorkoutButton} ${isWorkoutComplete ? styles.active : ''}`}
+          disabled={!isWorkoutComplete}
+        >
+          End Workout
+        </button>
       </div>
     </div>
   );
