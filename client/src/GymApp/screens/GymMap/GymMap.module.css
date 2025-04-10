@@ -93,3 +93,26 @@
   transform: translateY(-1px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
+
+
+
+.gymMap img {
+  max-width: 100%; /* Makes image responsive */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain; /* Ensures the entire image is visible */
+  display: block; /* Removes bottom spacing that can occur with inline elements */
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  .gymMap {
+    padding: 16px; /* Smaller padding on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .gymMap {
+    padding: 12px; /* Even smaller padding on mobile */
+  }
+}

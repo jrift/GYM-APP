@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./GymMap.module.css";
 import { workoutData } from "../../Data/workoutData";
-import gymMapImage from "../../../images/gym-floor-plan.svg"
+import gymMapImage from "../../../images/gym-map2.jpeg"
 
 const GymMap = () => {
   const navigate = useNavigate();
